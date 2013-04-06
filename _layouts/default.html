@@ -6,8 +6,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-	{% include stylesheets/styles.css %}
-	{% include stylesheets/pygment_trac.css %}
+    {% capture lvl %}{{ page.url | append:'index.html' | split:'/' | size }}{% endcapture %}
+	{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
+
+
+    <link rel="stylesheet" href="{{ relative }}stylesheets/styles.css">
+    <link rel="stylesheet" href="{{ relative }}stylesheets/pygment_trac.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
 
@@ -15,9 +19,7 @@
 <body>
 	{{ content }}
 
-	{% include javascripts/scale.fix.js %}
-
-
+	<script src="{{ relative }}javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
