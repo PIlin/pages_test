@@ -1,3 +1,7 @@
+---
+title: markdown test
+---
+
 test markdown
 =============
 
